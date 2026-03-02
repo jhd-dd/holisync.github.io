@@ -85,11 +85,19 @@
         function getPhilippineHolidays(year, monthIndex = null) {
             const fixedHolidays = [
                 { name: "New Year's Day",                     month: 1,  day: 1,  type: 'regular' },
+                { name: "National Fiction Day",               month: 1,  day: 2,  type: 'working' },
+                { name: "Single Awareness Day",               month: 2,  day: 15, type: 'working' },
                 { name: "People Power Anniversary",           month: 2,  day: 25, type: 'working' },
+                { name: "April Fool's Day",                   month: 4,  day: 1,  type: 'working' },
                 { name: "Araw ng Kagitingan",                 month: 4,  day: 9,  type: 'regular' },
                 { name: "Labor Day",                          month: 5,  day: 1,  type: 'regular' },
+                { name: "BestFriend Day",                     month: 6,  day: 8,  type: 'working' },
                 { name: "Independence Day",                   month: 6,  day: 12, type: 'regular' },
+                { name: "Social Media Day",                   month: 6,  day: 30, type: 'working' },
+                { name: "National Girlfriend Day",            month: 8,  day: 1,  type: 'working' },
+                { name: "National Couple's Day",              month: 8,  day: 18, type: 'working' },
                 { name: "Ninoy Aquino Day",                   month: 8,  day: 21, type: 'special' },
+                { name: "National BoyFriend Day",             month: 10, day: 3,  type: 'working' },
                 { name: "All Saints' Day",                    month: 11, day: 1,  type: 'special' },
                 { name: "All Souls' Day",                     month: 11, day: 2,  type: 'special' },
                 { name: "Bonifacio Day",                      month: 11, day: 30, type: 'regular' },
@@ -182,12 +190,12 @@
             } else {
                 holidays.forEach((holiday, i) => {
                     const item = document.createElement('div');
-                    item.className = `holiday-item${holiday.type === 'special' ? ' special' : holiday.type === 'working' ? ' working' : ''}`;
+                    item.className = `holiday-item${holiday.type === 'special' ? ' special' : holiday.type === 'working' ? ' working' : holiday.type === 'unofficial' ? ' unofficial' :''}`;
                     item.style.animationDelay = `${i * 0.05}s`;
                     item.innerHTML = `
                         <div class="holiday-left">
                             <span class="holiday-name">${holiday.name}</span>
-                            <span class="holiday-type">${holiday.type === 'regular' ? '📌 Regular Holiday' : holiday.type === 'special' ? '⭐ Special Non-Working' : '🔵 Special Working'}</span>
+                            <span class="holiday-type">${holiday.type === 'regular' ? '📌 Regular Holiday' : holiday.type === 'special' ? '⭐ Special Non-Working' : '🔵 Special Working' }</span>
                         </div>
                         <span class="holiday-date">${formatDate(holiday.date)}</span>
                     `;
