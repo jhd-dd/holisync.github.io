@@ -25,6 +25,7 @@ function getPhilippineHolidays(year, monthIndex = null) {
         { name: "Single Awareness Day",               month: 2,  day: 15, type: 'social' },
         { name: "People Power Anniversary",           month: 2,  day: 25, type: 'working' },
         { name: "National Proposal Day",              month: 3,  day: 20, type: 'social' },
+        { name: "Montalban Founding Anniversary",      month: 4,  day: 27, type: 'montalban'},
         { name: "April Fool's Day",                   month: 4,  day: 1,  type: 'social' },
         { name: "Araw ng Kagitingan",                 month: 4,  day: 9,  type: 'regular' },
         { name: "Labor Day",                          month: 5,  day: 1,  type: 'regular' },
@@ -104,6 +105,7 @@ function getTypeLabel(type) {
         case 'special':    return '⭐ Special Non-Working';
         case 'working':    return '🔵 Special Working';
         case 'social':     return '👥 Social Holiday';
+        case 'montalban':  return '⛰️ Montalban Holiday';
         default:           return type;
     }
 }
@@ -114,6 +116,7 @@ function getTypeColor(type) {
         case 'special':    return '5';
         case 'working':    return '7';
         case 'social':     return '3';
+        case 'montalban':  return '1';
         default:           return '1';
     }
 }
@@ -124,6 +127,7 @@ function getTypeDescription(type) {
         case 'special':    return 'Philippine Special Non-Working Holiday';
         case 'working':    return 'Philippine Special Working Holiday';
         case 'social':     return 'Philippine Social Holiday';
+        case 'social':     return 'Montalban Holiday';
         default:           return 'Philippine Holiday';
     }
 }
@@ -196,7 +200,7 @@ function renderHolidays() {
         } else {
             holidays.forEach((holiday, i) => {
                 const item = document.createElement('div');
-                item.className = `holiday-item${holiday.type === 'special' ? ' special' : holiday.type === 'working' ? ' working' : holiday.type === 'social' ? ' social' : ''}`;
+                item.className = `holiday-item${holiday.type === 'special' ? ' special' : holiday.type === 'working' ? ' working' :  holiday.type === 'montalban' ? ' montalban' :holiday.type === 'social' ? ' social' :  ''}`;
                 item.style.animationDelay = `${i * 0.05}s`;
                 item.innerHTML = `
                     <div class="holiday-left">
