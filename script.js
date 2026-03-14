@@ -116,7 +116,7 @@ function getTypeColor(type) {
         case 'special':    return '5';
         case 'working':    return '7';
         case 'social':     return '3';
-        case 'montalban':  return '1';
+        case 'montalban':  return '2';
         default:           return '1';
     }
 }
@@ -127,7 +127,7 @@ function getTypeDescription(type) {
         case 'special':    return 'Philippine Special Non-Working Holiday';
         case 'working':    return 'Philippine Special Working Holiday';
         case 'social':     return 'Philippine Social Holiday';
-        case 'social':     return 'Montalban Holiday';
+        case 'montalban':  return 'Montalban Holiday';
         default:           return 'Philippine Holiday';
     }
 }
