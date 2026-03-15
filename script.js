@@ -66,7 +66,8 @@ function getPhilippineHolidays(year, monthIndex = null) {
     ];
 
     if (monthIndex !== null) {
-        holidays = holidays.filter(h => h.date.getMonth() === monthIndex);
+        const holyWeekNames = ['Maundy Thursday', 'Good Friday', 'Black Saturday'];
+        holidays = holidays.filter(h => h.date.getMonth() === monthIndex || (holyWeekNames.includes(h.name) && (monthIndex === 2 || monthIndex === 3)));
     }
 
     return holidays.sort((a, b) => a.date - b.date);
@@ -184,7 +185,12 @@ function renderHolidays() {
     let totalCount = 0;
 
     sortedMonths.forEach(monthIndex => {
-        const holidays = getPhilippineHolidays(currentYear, monthIndex);
+    let holidays = getPhilippineHolidays(currentYear, monthIndex);
+    holidays = holidays.filter(h => {
+        const holyWeekNames = ['Maundy Thursday', 'Good Friday', 'Black Saturday'];
+        if (holyWeekNames.includes(h.name)) return h.date.getMonth() === monthIndex;
+        return h.date.getMonth() === monthIndex;
+    });
         totalCount += holidays.length;
 
         const label = document.createElement('div');
